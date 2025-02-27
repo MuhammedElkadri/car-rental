@@ -22,6 +22,7 @@
             <strong>Year:</strong> {{ $car->year }}<br>
             <br>
             <strong>Created by:</strong> {{ $car->user->name }}<br>
+            <strong>description:</strong> {{ $car->description }}<br>
             <strong>Image:</strong><br>
             <div style="display: flex; flex-wrap: wrap;">
                 @foreach ($car->images as $image)
@@ -30,9 +31,18 @@
             </div>
 
             @foreach ($car->reservations as $reservation)
+
             <strong>Start Reservation:</strong> {{ $reservation->start_date }}<br>
             <strong>End Reservation:</strong> {{ $reservation->end_date }}<br>
             @endforeach
+
+            @foreach ($car->reviews as $review)
+            <strong>comment by:</strong>{{ $review->user->name }}<br>
+            <strong>comment:</strong>{{ $review->comment }}<br>
+            <strong>Rating:</strong> {{ $review->rating }}<br>
+            @endforeach
+          
+
 
             <br>
         </li>

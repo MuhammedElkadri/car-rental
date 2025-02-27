@@ -17,6 +17,7 @@ class CarFactory extends Factory
      * @return array<string, mixed>
      */
     protected $model = \App\Models\Car::class;
+    
     public function definition(): array
     {
         return [
@@ -28,8 +29,8 @@ class CarFactory extends Factory
             'price_per_day' => fake()->numberBetween(100, 1000),
             'price_per_month' => fake()->numberBetween(1000, 10000),
             'status' => fake()->randomElement(['available', 'rented', 'unavailable']),
-            'user_id' =>User::factory(), // يربط السيارة بمستخدم عشوائي 
-
+            'description' => fake()->sentence(),
+            'user_id' =>User::factory(), 
                ];
     }
 }

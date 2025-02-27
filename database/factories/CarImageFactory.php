@@ -15,8 +15,7 @@ class CarImageFactory extends Factory
      * @return array<string, mixed>
      */
     protected $model = \App\Models\CarImage::class;
-    
-    public function definition(): array
+     public function definition(): array
     {
         return [
             'car_id' => \App\Models\Car::factory(),

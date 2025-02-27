@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('price_per_hour'); 
             $table->decimal('price_per_day'); 
             $table->decimal('price_per_month'); 
+            $table->string('description');
             $table->enum('status', ['available', 'rented', 'unavailable'])->default('available'); 
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
             $table->timestamps();

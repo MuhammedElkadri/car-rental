@@ -11,12 +11,12 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ReservationFactory extends Factory
 {
+    protected $model = \App\Models\Reservation::class;
     /**
      * Define the model's default state.
      *
      * @return array<string, mixed>
      */
-    protected $model = \App\Models\Reservation::class;
     public function definition(): array
     {
         return [
