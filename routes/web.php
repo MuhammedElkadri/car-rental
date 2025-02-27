@@ -1,11 +1,15 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

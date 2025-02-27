@@ -18,6 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->enum('role', ['user', 'owner', 'admin'])->default('user');            $table->string('address');
+            $table->string('city')->nullable();
+            $table->string('profile_image')->nullable(); // صورة الملف الشخصي
             $table->timestamps();
         });
 

@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'address',
+        'city',
     ];
 
     /**
@@ -45,4 +48,18 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function cars()
+    {
+        return $this->hasMany(Car::class);
+    }
+    public function reservations()
+    {
+        return $this->hasMany(Reservation::class);
+    }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+    
+
 }
