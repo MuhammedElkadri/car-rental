@@ -8,14 +8,16 @@
 	          <div class="collapse navbar-collapse" id="ftco-nav">
 	              <ul class="navbar-nav ml-auto">
 	                  <li class="nav-item {{ Request::is('home') ? 'active' : '' }} "><a href="{{ route('home.index') }}" class="nav-link">الرئيسية</a></li>
-	                  <li class="nav-item  {{ Request::is('about') ? 'active' : '' }} "><a href="about.html" class="nav-link">حول</a></li>
-	                  <li class="nav-item  {{ Request::is('services') ? 'active' : '' }} "><a href="services.html" class="nav-link">الخدمات</a></li>
 	                  <li class="nav-item  {{ Request::is('cars') ? 'active' : '' }} "><a href="{{ route('cars.index') }}" class="nav-link">السيارات</a></li>
-	                  <li class="nav-item  {{ Request::is('blog') ? 'active' : '' }} "><a href="blog.html" class="nav-link">المدونة</a></li>
 	                  <li class="nav-item  {{ Request::is('contact') ? 'active' : '' }} "><a href="contact.html" class="nav-link">اتصل بنا</a></li>
 
 	                  @if(Auth::check())
-	                  <li class="nav-item "><a href="{{ route('logout') }}" class="nav-link">تسجيل الخروج</a></li>
+	                  <li class="nav-item">
+	                      <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">تسجيل الخروج</a>
+	                      <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+	                          @csrf
+	                      </form>
+	                  </li>
 	                  @else
 	                  <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">تسجيل الدخول</a></li>
 	                  <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">التسجيل</a></li>

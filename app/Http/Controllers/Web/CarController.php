@@ -14,7 +14,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::all();
+        $cars = Car::paginate(4);
         return view('car_rent.pages.cars.index',["page_name"=>"السيارات","cars"=>$cars]);
     }
 
@@ -42,7 +42,7 @@ class CarController extends Controller
         $car = Car::find($id);  
         $reviews = Review::where('car_id', $id)->get();
         $average_rating = $reviews->avg('rating');
-        $ratingCounts = $reviews->groupBy('rating')->map->count();
+        $ratingCounts = $reviews->groupBy('rating')->map->count()->sortDesc();
         return view('car_rent.pages.cars.show',
         ["page_name"=>"التفاصيل","car"=>$car,"reviews"=>$reviews,"average_rating"=>$average_rating,"ratingCounts"=>$ratingCounts]);
     }

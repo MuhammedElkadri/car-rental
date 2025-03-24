@@ -27,6 +27,9 @@
     		</div>
 			</div>
 		</section>
+	<div class="d-flex justify-content-center">
+		{{ $cars->links('pagination::bootstrap-4') }}
+	</div>
 @endsection
 
 

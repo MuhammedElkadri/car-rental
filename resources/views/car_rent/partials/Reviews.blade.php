@@ -15,8 +15,10 @@
                     @endfor
                     @for ($i = $review->rating; $i < 5; $i++)
                         <i class="ion-ios-star " style="color: gray;"></i>
+
                     @endfor
                 </span>
+                
 
                 <!-- الرد على التعليق -->
                 <!-- <span class="text-right"><a href="#" class="reply"><i class="icon-reply"></i></a></span> -->

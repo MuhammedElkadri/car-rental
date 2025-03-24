@@ -28,9 +28,25 @@ class Car extends Model
         'description',
         'status',
         'user_id',
-
-        
-        
+        'sunroof',
+        'air_conditioning',
+        'child_seat',
+        'gps',
+        'usb_ports',
+        'ABS',
+        'rear_view_camera',
+        'entertainment_system',
+        'bluetooth',
+        'onboard_computer',
+        'audio_input',
+        'remote_central_locking',
+        'parking_sensors',
+        'music',
+        'car_kit',
+        'insurance_status',
+        'damage_status',
+        'availability_from',
+        'availability_to',
     ];
     public function images()
     {

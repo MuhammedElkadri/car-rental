@@ -46,7 +46,8 @@ return new class extends Migration
             $table->boolean('audio_input')->default(false);
             $table->boolean('remote_central_locking')->default(false);
             $table->boolean('parking_sensors')->default(false);
-            
+            $table->boolean('music')->default(false);
+            $table->boolean('car_kit')->default(false); 
             // Status
             $table->enum('status', ['available', 'rented', 'maintenance', 'unavailable'])->default('available');
             $table->enum('insurance_status', ['valid', 'expired', 'pending'])->default('valid');
