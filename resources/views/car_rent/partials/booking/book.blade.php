@@ -1,23 +1,64 @@
-@extends('layouts.app')
-
+@extends('car_rent.layouts.CERL')
 @section('content')
-<div class="container">
-    <h2>حجز السيارة:</h2>
-    
-    <form action="{{ route('cars.book', ['car' => $car->id]) }}" method="get">
-        @csrf
-        
-        <div class="mb-3">
-            <label for="start_date">تاريخ البدء</label>
-            <input type="date" class="form-control" name="start_date" required>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <h5 class="card-header text-center">احجز سيارتك الان</h5>
+                <div class="card-body">
+                    <form action="{{ route('cars.book', ['car' => $car->id]  ) }}" method="post">
+                        @csrf
+                        <div class="mb-3 row">
+                            <label for="name" class="col-md-2 col-form-label">الاسم</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="text" id="name" name="name" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="phone" class="col-md-2 col-form-label">الهاتف</label>
+                            <div class="col-md-10">
+                                <input class="form-control phone-mask" type="text" id="phone" name="phone" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="email" class="col-md-2 col-form-label">البريد الالكتروني</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="email" id="email" name="email" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="address" class="col-md-2 col-form-label">العنوان</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="text" id="address" name="address" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="start_date" class="col-md-2 col-form-label">  تاريخ البداية</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="date" id="start_date" name="start_date" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="end_date" class="col-md-2 col-form-label">تاريخ نهاية الحجز</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="date" id="end_date" name="end_date" required />
+                            </div>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="time" class="col-md-2 col-form-label">  وقت الحجز</label>
+                            <div class="col-md-10">
+                                <input class="form-control" type="time" id="time" name="time" required />
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">حجز السيارة</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        
-        <div class="mb-3">
-            <label for="end_date">تاريخ الانتهاء</label>
-            <input type="date" class="form-control" name="end_date" required>
-        </div>
-        
-        <button type="submit" class="btn btn-primary">تأكيد الحجز</button>
-    </form>
+    </div>
 </div>
 @endsection

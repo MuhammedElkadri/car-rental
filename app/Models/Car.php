@@ -6,8 +6,8 @@ use App\Models\Review;
 use App\Models\CarImage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\HasMedia;
 
 class Car extends Model implements HasMedia
 {

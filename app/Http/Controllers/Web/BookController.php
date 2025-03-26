@@ -12,15 +12,16 @@ class BookController extends Controller
     {
         // Add your logic here
 
-       
-        return view('car_rent.partials.booking.t');
+        $car = Car::findOrFail($car->id);
+        $car->load('images');   
+        return view('car_rent.partials.booking.book', compact('car'));
 
-        
     }
-    public function showBookingForm()
+    public function showBookingForm($carId)
     {
-
-        return view('car_rent.partials.booking.t');
+        $car = Car::findOrFail($carId);
+        $car->load('images');
+        return view('car_rent.partials.booking.book', compact('car'));
     }
 }   
 
