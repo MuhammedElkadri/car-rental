@@ -44,7 +44,7 @@
     <!-- car price -->
 
     <td class="price">
-        <p class="btn-custom"><a href="#">Rent a car</a></p>
+        <p class="btn-custom"><a href="{{ route('cars.book', ['car' => $car->id]) }}">Rent a car</a></p>
         <div class="price-rate">
             <h3>
                 <span class="num"><small class="currency">$</small> {{ $car->price_per_hour }}</span>
@@ -55,7 +55,7 @@
     </td>
 
     <td class="price">
-        <p class="btn-custom"><a href="#">Rent a car</a></p>
+        <p class="btn-custom"><a href="{{ route('cars.book', ['car' => $car->id]) }}">Rent a car</a></p>
         <div class="price-rate">
             <h3>
                 <span class="num"><small class="currency">$</small> {{ $car->price_per_day }}</span>
@@ -67,8 +67,8 @@
     <!-- end car price -->
 
     <!-- car price -->
-    <td class="price">
-        <p class="btn-custom"><a href="#">Rent a car</a></p>
+    <td class="price">  
+        <p class="btn-custom"><a href="{{ route('cars.book', ['car' => $car->id]) }}">Rent a car</a></p>
         <div class="price-rate">
             <h3>
                 <span class="num"><small class="currency">$</small> {{ $car->price_per_month }}</span>
