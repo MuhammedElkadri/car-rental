@@ -43,6 +43,13 @@ class BookController extends Controller
         $booking->save();
 
         // Redirect with success message
-        return redirect()->route('home.index')->with('success', 'تم حجز السيارة بنجاح. سيتم التواصل معك قريباً.');
+        return redirect()->route('cars.book.show', $car->id)->with('success', 'تم حجز السيارة بنجاح. سيتم التواصل معك قريباً.');
+    }
+
+    public function showBooking($carId)
+    {
+        $car = Car::findOrFail($carId);
+        $car->load('images');
+        return view('car_rent.partials.booking.show', compact('car'));
     }
 }

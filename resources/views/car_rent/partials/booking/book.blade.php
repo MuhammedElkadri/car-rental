@@ -52,7 +52,8 @@
                         </div>
                         <div class="row justify-content-center">
                             <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary btn-lg w-100">حجز السيارة</button>
+                                <button type= " submit" class="btn btn-primary btn-lg w-100"  >حجز السيارة</button>
+                                <a href="{{ route('cars.index') }}" class="btn btn-secondary btn-lg w-100">العودة للرئيسية</a>
                             </div>
                         </div>
                     </form>

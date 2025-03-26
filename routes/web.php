@@ -15,6 +15,8 @@ Route::post('/cars/{car}/book', [BookController::class, 'storeBooking'])->name('
 
 
 Route::get('/cars/{car}/book', [BookController::class, 'showBookingForm'])->name('cars.book');
+Route::get('/cars/{car}/book/show', [BookController::class, 'showBooking'])->name('cars.book.show');
+
 Route::get('/', function () {
     return redirect()->route('home.index');
 });
