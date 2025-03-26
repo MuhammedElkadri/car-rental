@@ -11,6 +11,9 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return redirect()->route('home.index');
 });
+Route::get("/layout",function(){
+    return view("car_rent.layouts.CERL");
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

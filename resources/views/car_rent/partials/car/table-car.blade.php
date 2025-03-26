@@ -13,6 +13,7 @@
     <td class="product-name">
         
         <h3>{{ $car->brand }}</h3>
+        <h4>{{ $car->user->name }}</h4>
         <span class="status-label">{{ $car->status }}</span>
         <p class="mb-0 rated">
             <span>rated:</span>

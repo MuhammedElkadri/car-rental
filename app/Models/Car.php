@@ -6,48 +6,14 @@ use App\Models\Review;
 use App\Models\CarImage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Car extends Model
+class Car extends Model implements HasMedia
 {
     use HasFactory;
-    protected $fillable = [
-        'license_plate',
-        'brand',
-        'model',
-        'make',
-        'color',
-        'year',
-        'price_per_hour',
-        'price_per_day',
-        'price_per_month',
-        'mileage',
-        'transmission',
-        'seats',
-        'luggage',
-        'fuel',
-        'description',
-        'status',
-        'user_id',
-        'sunroof',
-        'air_conditioning',
-        'child_seat',
-        'gps',
-        'usb_ports',
-        'ABS',
-        'rear_view_camera',
-        'entertainment_system',
-        'bluetooth',
-        'onboard_computer',
-        'audio_input',
-        'remote_central_locking',
-        'parking_sensors',
-        'music',
-        'car_kit',
-        'insurance_status',
-        'damage_status',
-        'availability_from',
-        'availability_to',
-    ];
+    use InteractsWithMedia;
+    protected $guarded = ['id','created_at','updated_at'];
     public function images()
     {
         return $this->hasMany(CarImage::class);
@@ -63,9 +29,6 @@ class Car extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
-    }
-    public function maintenance() {
-        return $this->hasMany(Maintenance::class);
     }
 
 }
