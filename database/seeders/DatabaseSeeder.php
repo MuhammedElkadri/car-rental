@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Car;
 use Illuminate\Database\Seeder;
 use Database\Seeders\Permissions\PermissionsSeeder;
 use Database\Seeders\Permissions\RolesSeeder;
@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             CarDataSeeder::class,
         ]);
+
+        Car::factory()->count(50)->create();
     }
 }
