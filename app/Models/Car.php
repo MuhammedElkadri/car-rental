@@ -4,10 +4,12 @@ namespace App\Models;
 
 use App\Models\Review;
 use App\Models\CarImage;
+use App\Models\Book;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\HasMedia;
+
 
 class Car extends Model implements HasMedia
 {
@@ -17,6 +19,10 @@ class Car extends Model implements HasMedia
     public function images()
     {
         return $this->hasMany(CarImage::class);
+    }
+    public function books()
+    {
+        return $this->hasMany(Book::class);
     }
     public function user()
     {
@@ -30,5 +36,6 @@ class Car extends Model implements HasMedia
     {
         return $this->hasMany(Review::class);
     }
+
 
 }

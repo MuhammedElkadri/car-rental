@@ -6,7 +6,7 @@
             <div class="card">
                 <h5 class="card-header text-center">احجز سيارتك الان</h5>
                 <div class="card-body">
-                    <form action="{{ route('cars.book', ['car' => $car->id]  ) }}" method="post">
+                    <form action="{{ route('cars.book.submit', ['car' => $car->id]) }}" method="post">
                         @csrf
                         <div class="mb-3 row">
                             <label for="name" class="col-md-2 col-form-label">الاسم</label>

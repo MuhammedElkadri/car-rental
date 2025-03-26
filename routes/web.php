@@ -7,12 +7,14 @@ use App\Http\Controllers\Web\CarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Web\BookController;
-use App\Http\Controllers\Web\ReservationController;     
+use App\Http\Controllers\Web\ReservationController;
+use App\Http\Controllers\Web\BookController;    
+// Fix the space in the route name
+Route::post('/cars/{car}/book', [BookController::class, 'storeBooking'])->name('cars.book.submit');// Add this import at the top of your web.php file
+
 
 
 Route::get('/cars/{car}/book', [BookController::class, 'showBookingForm'])->name('cars.book');
-Route::post('/cars/{car}/book', [BookController::class, 'processBooking'])->name('cars.book.submit');
 Route::get('/', function () {
     return redirect()->route('home.index');
 });
