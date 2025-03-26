@@ -8,11 +8,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Web\BookController;
-use App\Http\Controllers\Web\ReservationController;
+use App\Http\Controllers\Web\ReservationController;     
 
 
-Route::get('/cars/{car}/book', [\App\Http\Controllers\Web\BookController::class, 'showBookingForm'])->name('cars.book');
-Route::post('/cars/{car}/book', [\App\Http\Controllers\Web\BookController::class, 'processBooking'])->name('cars.book.submit');
+Route::get('/cars/{car}/book', [BookController::class, 'showBookingForm'])->name('cars.book');
+Route::post('/cars/{car}/book', [BookController::class, 'processBooking'])->name('cars.book.submit');
 Route::get('/', function () {
     return redirect()->route('home.index');
 });

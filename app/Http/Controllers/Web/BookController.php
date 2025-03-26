@@ -13,15 +13,14 @@ class BookController extends Controller
         // Add your logic here
 
        
-        return view('cars.t');
+        return view('car_rent.partials.booking.t');
 
         
     }
     public function showBookingForm()
     {
-        
 
-        return view('cars.t');
+        return view('car_rent.partials.booking.t');
     }
 }   
 
