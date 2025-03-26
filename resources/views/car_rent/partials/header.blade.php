@@ -25,3 +25,5 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     
   </head>
+
+  <!-- في أعلى الصفحة أو حيث تريد عرض الرسائل -->

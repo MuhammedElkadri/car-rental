@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Traits\HasRoles;
 
 class UserController extends Controller
 {
@@ -38,14 +39,29 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $user->update($request->all());
+   $user->syncRoles($request->role);
         return redirect()->route('users.index');
     }
 
     public function destroy($id)
     {
         $user = User::find($id);
+    
+        // التحقق من أن المستخدم موجود
+        if (!$user) {
+            return redirect()->route('users.index')->with('error', 'المستخدم غير موجود');
+        }
+    
+        // حساب عدد المشرفين الحاليين
+        $adminCount = User::role('admin')->count();
+    
+        // التحقق مما إذا كان المستخدم المراد حذفه هو مشرف
+        if ($user->hasRole('admin') && $adminCount <= 1) {
+            return redirect()->route('users.index')->with('error', 'لا يمكن حذف آخر مشرف متبقي');
+        }
+    
+        // حذف المستخدم إذا لم يكن آخر مشرف
         $user->delete();
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('success', 'تم حذف المستخدم بنجاح');
     }
 }
