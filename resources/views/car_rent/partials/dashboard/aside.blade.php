@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-      <a href="{{ route('home.index') }}" class="app-brand-link">
+      <a href="{{ route('cars.index') }}" class="app-brand-link">
         <span class="app-brand-logo demo">
           <svg
             width="25"
@@ -56,7 +56,7 @@
             </g>
           </svg>
         </span>
-        <span class="app-brand-text demo menu-text fw-bolder ms-2">Car Rental</span>
+        <span class="app-brand-text demo menu-text fw-bolder ms-2">الرجوع للرئيسية</span>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -74,13 +74,17 @@
           <div data-i18n="Analytics">Dashboard</div>
         </a>
       </li>
-      <!-- User -->
-      <li class="menu-item">
-        <a href="{{ route('users.index') }}" class="menu-link">
-          <i class="menu-icon tf-icons bx bx-user"></i>
-          <div data-i18n="Tables">Users</div>
-        </a>
-      </li>
+       <!-- User -->
+      @if (auth()->user()->role == 'admin')
+           
+            <li class="menu-item">
+              <a href="{{ route('users.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div data-i18n="Tables">Users</div>
+              </a>
+            </li>
+      @endif
+
     
       <li class="menu-header small text-uppercase">
         <span class="menu-header-text">Pages</span>

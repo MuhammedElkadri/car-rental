@@ -21,8 +21,7 @@ class CarImageFactory extends Factory
     {
         return [
             'car_id' => rand(1,Car::count()),
-            
-            'path' => 'images/imagesForCar/' . collect(File::files('public/images/imagesForCar/'))->random()->getFilename()
+            'path' => 'images/imagesForCar/' . collect(File::files(public_path('images/imagesForCar')))->random()->getFilename()
         ];
     }
 }

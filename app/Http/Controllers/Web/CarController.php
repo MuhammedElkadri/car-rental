@@ -15,7 +15,8 @@ class CarController extends Controller
     public function index()
     {
         $cars = Car::paginate(4);
-        return view('car_rent.pages.cars.index',["page_name"=>"السيارات","cars"=>$cars]);
+        
+        return view('car_rent.pages.cars.index', ["page_name" => "السيارات", "cars" => $cars]);
     }
 
     /**
@@ -23,7 +24,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+        return view('car_rent.pages.cars.create');
     }
 
     /**
@@ -31,7 +32,27 @@ class CarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $car = Car::create($request->all());
+        $lastPage = $car->paginate(5)->lastPage();
+    
+        if ($request->hasFile('images')) {
+            $isFirst = true; // متغير لتحديد الصورة الأولى
+            foreach ($request->file('images') as $image) {
+                if ($isFirst) {
+                    // تعيين الصورة الأولى كرئيسية
+                    $car->addMedia($image)
+                        ->withCustomProperties(['is_main' => true])
+                        ->toMediaCollection('car_images');
+                    $isFirst = false; // تعطيل بعد الصورة الأولى
+                } else {
+                    // الصور الأخرى بدون علامة رئيسية
+                    $car->addMedia($image)
+                        ->toMediaCollection('car_images');
+                }
+            }
+        }
+    
+        return redirect()->route('cars.index', ['page' => $lastPage])->with('success', 'تم إضافة السيارة بنجاح');
     }
 
     /**
@@ -39,12 +60,16 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
-        $car = Car::find($id);  
+
+        $car = Car::find($id);
         $reviews = Review::where('car_id', $id)->get();
         $average_rating = $reviews->avg('rating');
         $ratingCounts = $reviews->groupBy('rating')->map->count()->sortDesc();
-        return view('car_rent.pages.cars.show',
-        ["page_name"=>"التفاصيل","car"=>$car,"reviews"=>$reviews,"average_rating"=>$average_rating,"ratingCounts"=>$ratingCounts]);
+        $mainImage = $car->getMedia('car_images')->firstWhere('custom_properties.is_main', true);
+        return view(
+            'car_rent.pages.cars.show',
+            ["page_name" => "التفاصيل", "car" => $car, "reviews" => $reviews, "average_rating" => $average_rating, "ratingCounts" => $ratingCounts, "mainImage" => $mainImage]
+        );
     }
 
     /**
@@ -70,5 +95,4 @@ class CarController extends Controller
     {
         //
     }
-   
 }

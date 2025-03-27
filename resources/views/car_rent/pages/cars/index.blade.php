@@ -18,6 +18,7 @@
 						    </thead>
 						    <tbody>
 						    	@foreach ($cars as $car)
+						
 						    	@include('car_rent.partials.car.table-car')
 						    	@endforeach
 						    </tbody>

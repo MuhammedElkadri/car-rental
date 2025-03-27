@@ -3,7 +3,7 @@
 
     <!-- car image -->
     <td class="car-image" onmouseover="this.querySelector('.overlay').style.display='block';" onmouseout="this.querySelector('.overlay').style.display='none';">
-        <div class="img" style="background-image:url({{ asset($car->images->first()->path??'') }}); position: relative;">
+        <div class="img" style="background-image:url({{ asset( asset($car->getMedia('car_images')->firstWhere('custom_properties.is_main', true)->getUrl())??'') }}); position: relative;">
             <a href="{{ route('cars.show', ['car' => $car->id]) }}" class="overlay" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); color: white; text-align: center; line-height: 100px;">View Details</a>
         </div>       
     </td>

@@ -53,9 +53,7 @@ return new class extends Migration
             $table->enum('insurance_status', ['valid', 'expired', 'pending'])->default('valid');
             $table->text('damage_status')->nullable();
             
-            // Availability
-            $table->date('availability_from')->nullable();
-            $table->date('availability_to')->nullable();
+
             
             // Relations
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
