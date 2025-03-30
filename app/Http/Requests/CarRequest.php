@@ -40,7 +40,7 @@ class CarRequest extends FormRequest
             'location' => 'required|string|max:100',
             'latitude' => 'required|numeric|between:-90,90',
             'longitude' => 'required|numeric|between:-180,180',
-            'description' => 'required|string|max:500',
+            'description' => 'required|string',
 
             // الميزات (Features)
             'sunroof' => 'boolean',

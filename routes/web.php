@@ -7,15 +7,14 @@ use App\Http\Controllers\Web\CarController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Web\ReservationController;
-use App\Http\Controllers\Web\BookController;    
+use App\Http\Controllers\Web\BookController;
+
+
 // Fix the space in the route name
 Route::post('/cars/{car}/book', [BookController::class, 'storeBooking'])->name('cars.book.submit');// Add this import at the top of your web.php file
-
-
-
 Route::get('/cars/{car}/book', [BookController::class, 'showBookingForm'])->name('cars.book');
 Route::get('/cars/{car}/book/show', [BookController::class, 'showBooking'])->name('cars.book.show');
+
 
 Route::get('/', function () {
     return redirect()->route('home.index');
@@ -42,5 +41,18 @@ require __DIR__.'/auth.php';
 
 Route::resource('/home', HomeController::class);
 Route::resource('/cars', CarController::class);
-Route::resource('/dashboard', DashboardController::class);
-Route::resource('/users', UserController::class); 
+
+Route::middleware(['auth', 'can:view.dashboard'])->group(function () {
+    Route::resource('/dashboard', DashboardController::class);
+
+});
+Route::middleware(['auth', 'can:edit.users'])->group(function () {
+    Route::resource('/users', UserController::class);
+});
+
+
+Route::post('/cars/{car}/images/{image}', [CarController::class, 'setMain'])->name('cars.images.setMain');
+Route::delete('/cars/{car}/images/{image}', [CarController::class, 'destroyImage'])->name('cars.images.destroy');
+Route::get('/contact', function(){
+    return view('car_rent.pages.contact.index',["page_name"=>"اتصل بنا"]);
+})->name('contact');

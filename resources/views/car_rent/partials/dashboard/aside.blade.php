@@ -56,7 +56,7 @@
             </g>
           </svg>
         </span>
-        <span class="app-brand-text demo menu-text fw-bolder ms-2">الرجوع للرئيسية</span>
+        <span class="app-brand-text demo menu-text fw-bolder ms-2">الرئيسية</span>
       </a>
 
       <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -68,16 +68,16 @@
 
     <ul class="menu-inner py-1">
       <!-- Dashboard -->
-      <li class="menu-item active">
-        <a href="index.html" class="menu-link">
+      <li class="menu-item {{request()->is('dashboard') ? 'active' : ''}}">
+        <a href="{{route('dashboard.index')}}" class="menu-link">
           <i class="menu-icon tf-icons bx bx-home-circle"></i>
           <div data-i18n="Analytics">Dashboard</div>
         </a>
       </li>
        <!-- User -->
-      @if (auth()->user()->role == 'admin')
+      @if (auth()->user()->hasRole('admin'))
            
-            <li class="menu-item">
+            <li class="menu-item {{request()->is('users') ? 'active' : ''}}">
               <a href="{{ route('users.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Tables">Users</div>

@@ -7,15 +7,23 @@
     			<div class="col-md-12 ftco-animate">
     				<div class="car-list">
 	    				<table class="table">
-						    <thead class="thead-primary">
-						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						        <th>&nbsp;</th>
-						        <th class="bg-primary heading">Per Hour Rate</th>
-						        <th class="bg-dark heading">Per Day Rate</th>
-						        <th class="bg-black heading">Leasing</th>
-						      </tr>
-						    </thead>
+							<thead class="thead-primary">
+								<tr class="text-center">
+									
+									@can('create', App\Models\Car::class)
+									<th class="primary heading">
+										<a href="{{ route('cars.create') }}" class="btn btn-primary btn-lg">إضافة سيارة</a>
+									</th>
+									@endcan
+									@cannot('create', App\Models\Car::class)
+									<th>&nbsp;</th>
+									@endcannot
+									<th>&nbsp;</th>
+									<th class="bg-primary heading">Per Hour Rate</th>
+									<th class="bg-dark heading">Per Day Rate</th>
+									<th class="bg-black heading">Leasing</th>
+								</tr>
+							</thead>
 						    <tbody>
 						    	@foreach ($cars as $car)
 						

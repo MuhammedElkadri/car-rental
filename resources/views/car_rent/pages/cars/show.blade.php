@@ -7,6 +7,28 @@
         <!-- car details الصورة الرئسية مع الصور مع  التفاصيل الرئيسية -->
         @include('car_rent.partials.car-details.details')
         <!-- end car details -->
+        <div class="row">
+            <div class="col-md-12">
+                <h3>موقع السيارة</h3>
+                <div id="map" style="height: 400px; width: 100%;"></div>
+                <script>
+                    function initMap() {
+                        var location = { lat: {{ $car->latitude }}, lng: {{ $car->longitude }} }; 
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 15,
+                            center: location
+                        });
+                        var marker = new google.maps.Marker({
+                            position: location,
+                            map: map
+                        });
+                    }
+                </script>
+                <script async defer
+                    src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+                </script>
+            </div>
+        </div>
 
 
         <!-- Features Description Review -->

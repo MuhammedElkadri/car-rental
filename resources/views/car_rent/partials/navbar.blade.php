@@ -9,7 +9,7 @@
 	              <ul class="navbar-nav ml-auto">
 	                  <li class="nav-item {{ Request::is('home') ? 'active' : '' }} "><a href="{{auth()->check()? route('dashboard.index') : route('home.index')  }}" class="nav-link">الرئيسية</a></li>
 	                  <li class="nav-item  {{ Request::is('cars') ? 'active' : '' }} "><a href="{{ route('cars.index') }}" class="nav-link">السيارات</a></li>
-	                  <li class="nav-item  {{ Request::is('contact') ? 'active' : '' }} "><a href="contact.html" class="nav-link">اتصل بنا</a></li>
+	                  <li class="nav-item  {{ Request::is('contact') ? 'active' : '' }} "><a href="{{ route('contact') }}" class="nav-link">اتصل بنا</a></li>
 
 	                  @if(Auth::check())
 	                  <li class="nav-item">

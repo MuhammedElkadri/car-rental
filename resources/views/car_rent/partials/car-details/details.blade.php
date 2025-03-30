@@ -105,6 +105,8 @@
 				</div>
 			</div>
 		</div>
+
+		
 	</div>
 	<a href="{{ route('cars.book', ['car' => $car->id]) }}" class="btn btn-primary btn-floating" style="position: fixed; bottom: 30px; right: 30px; border-radius: 50%; padding: 15px; font-size: 24px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: background-color 0.3s;">
 		<i class="flaticon-car" style="color: white;"></i> حجز

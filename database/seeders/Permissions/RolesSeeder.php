@@ -14,7 +14,7 @@ class RolesSeeder extends Seeder
         $admin->syncPermissions(Permission::pluck('name')->toArray());
 
         $carOwner = Role::firstOrCreate(['name' => 'car owner']);
-        $carOwner->syncPermissions(['cars.create', 'cars.edit', 'cars.delete']);
+        $carOwner->syncPermissions(['cars.create', 'cars.edit', 'cars.delete','view.dashboard']);
 
         $renter = Role::firstOrCreate(['name' => 'renter']);
  

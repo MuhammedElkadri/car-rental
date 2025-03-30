@@ -11,7 +11,8 @@ class PermissionsSeeder extends Seeder
     {
         $permissions = [
             // User Management
-            'users.manage',
+            'view.dashboard',
+            'edit.users',
         
             // Car Management
             'cars.create',
@@ -23,8 +24,6 @@ class PermissionsSeeder extends Seeder
             'booking.cancel',
             'booking.view.own',
         
-            // Payments & Transactions
-            'payments.manage',
         
             // Reviews & Ratings
             'reviews.leave',
